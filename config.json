@@ -16,16 +16,14 @@
                 "decryption": "none"
             },
             "streamSettings": {
-                "network": "ws",
-                "wsSettings": {
-                    "path": "/fast-game"
-                },
-                "sockopt": {
-                    "tcpFastOpen": true,
-                    "tcpNoDelay": true,
-                    "mark": 255
-                }
-            },
+       "network": "tcp",
+       "security": "none",
+      "sockopt": {
+            "tcpNoDelay": true,
+            "tcpFastOpen": true
+          }
+        }
+            ,
             "sniffing": {
                 "enabled": false
             }
@@ -45,24 +43,14 @@
             }
         }
     ],
-    "routing": {
-        "domainStrategy": "AsIs",
-        "rules": [
-            {
-                "type": "field",
-                "ip": ["geoip:private"],
-                "outboundTag": "blocked"
-            }
-        ]
-    },
     "policy": {
         "levels": {
             "0": {
-                "handshake": 2,
+                "handshake": 1,
                 "connIdle": 300,
-                "uplinkOnly": 1,
-                "downlinkOnly": 1,
-                "bufferSize": 0
+                "uplinkOnly": 0,
+                "downlinkOnly": 0,
+                "bufferSize": 2
             }
         },
         "system": {
